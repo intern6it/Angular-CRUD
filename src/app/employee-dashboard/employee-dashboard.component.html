@@ -1,0 +1,141 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1>Angular CRUD</h1>
+        <div class="d-flex">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
+                Add Employee
+            </button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of employeeData">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.mobile}}</td>
+            <td>{{row.salary}}</td>
+            <td>
+                <button (click)="onEdit(row)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Update</button>
+                <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue" >
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">First Name</label>
+                        <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+
+                            <!-- <span *ngif="(formValueControl.firstName.touched || submitted) && formValueControl.firstName.errors?.required">
+                                First name is required
+                            </span> -->
+                            
+                           
+                            <!-- <div *ngIf="!firstName.valid && (firstName.dirty ||firstName.touched)">
+                                <div [hidden]="!firstName.errors.pattern">
+                                  Only characters are allowed
+                                </div>
+                                <div [hidden]="!firstName.errors.maxLength">
+                                  Max length allowed is {{lastname.errors.maxlength?.requiredLength}} 
+                                </div>
+                                <div [hidden]="!lastname.errors.required">
+                                  Last Name is required
+                                </div>
+                              </div> -->
+                    </div>
+                    <div *ngIf="formValue.controls['firstName'].invalid && (formValue.controls['firstName'].dirty || formValue.controls['firstName'].touched)" class="alert alert-danger">
+                          <div [hidden]="!formValue.controls['firstName'].errors">
+                            First Name is required
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                        <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div *ngIf="formValue.controls['lastName'].invalid && (formValue.controls['lastName'].dirty || formValue.controls['lastName'].touched)" class="alert alert-danger">
+                        <div [hidden]="!formValue.controls['lasttName'].errors">
+                          Last Name is required
+                        </div>
+                  </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="email"
+                            aria-describedby="emailHelp" />
+
+                            <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </div> -->
+                          
+                    </div>
+                    
+                    
+
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mobile</label>
+                        <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <!-- <div *ngIf="formValue.controls['firstName'].invalid && (formValue.controls['firstName'].dirty || formValue.controls['firstName'].touched)" class="alert alert-danger">
+                        <div [hidden]="!formValue.controls['firstName'].errors">
+                          First Name is required
+                        </div>
+                  </div> -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Salary</label>
+                        <input type="text" formControlName="salary" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" (click)="postEmployeeDetails()" [disabled]="!formValue.valid" data-bs-dismiss="modal" class="btn btn-primary">Add</button>
+                <button type="button" (click)="updateEmployeeDetails()"  data-bs-dismiss="modal" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div style="float: right; width:50%;">
+ 
+    <h3>Form Status</h3>
+    <b>valid : </b>{{formValue.valid}}
+    <b>invalid : </b>{{formValue.invalid}}
+    <b>touched : </b>{{formValue.touched}}
+    <b>untouched : </b>{{formValue.untouched}}
+    <b>pristine : </b>{{formValue.pristine}}
+    <b>dirty : </b>{{formValue.dirty}}
+    <b>disabled : </b>{{formValue.disabled}}
+    <b>enabled : </b>{{formValue.enabled}}
+   
+    <h3>Form Value</h3>
+    {{formValue.value |json}}
+   
+  </div> -->

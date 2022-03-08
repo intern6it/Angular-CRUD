@@ -1,0 +1,83 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "firstName": "Akash",
+      "lastName": "wd",
+      "email": "asjdb@aj.dw",
+      "mobile": "444414",
+      "salary": "1"
+    },
+    {
+      "id": 3,
+      "firstName": "wd",
+      "lastName": "asf",
+      "email": "qwd@asdf.sef",
+      "mobile": "123412",
+      "salary": "131"
+    },
+    {
+      "id": 4,
+      "firstName": "we",
+      "lastName": "wr",
+      "email": "efg@we.ef",
+      "mobile": "3r22424",
+      "salary": "234124"
+    },
+    {
+      "id": 5,
+      "firstName": "wer",
+      "lastName": "sefwef",
+      "email": "sfa@af.sdf",
+      "mobile": "124124",
+      "salary": "4124"
+    },
+    {
+      "id": 6,
+      "firstName": "gwefgwe",
+      "lastName": "sfag",
+      "email": "sdf@ef.wef",
+      "mobile": "345345",
+      "salary": "55"
+    },
+    {
+      "id": 7,
+      "firstName": "sd",
+      "lastName": "sd",
+      "email": "asf@sdf.asef",
+      "mobile": "2144",
+      "salary": "12414"
+    },
+    {
+      "id": 8,
+      "firstName": "rg",
+      "lastName": "sdfgb",
+      "email": "erg@f.er",
+      "mobile": "34r345",
+      "salary": "24234"
+    },
+    {
+      "id": 9,
+      "firstName": "sg",
+      "lastName": "23",
+      "email": "wef",
+      "mobile": "wtr",
+      "salary": "234"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
