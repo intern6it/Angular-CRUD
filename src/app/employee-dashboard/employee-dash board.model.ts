@@ -5,5 +5,8 @@ export class EmployeeModel{
     email:string='';
     mobile:string='';
     salary:string='';
-    
+    gender:string='';
+    date: Date;
+    standard: string='';
+
 }

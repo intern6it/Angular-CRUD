@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crudwithangular.model.Employee;
@@ -31,6 +30,7 @@ public class EmployeeController {
 
 	@PostMapping("/employees")
 	public Employee createEmployee(@RequestBody Employee employee) {
+		System.out.println(employee.getDate());
 		return employeeRepository.save(employee);
 	}
 
@@ -43,7 +43,11 @@ public class EmployeeController {
 		employee.setEmail(employeeDetail.getEmail());
 		employee.setMobile(employeeDetail.getMobile());
 		employee.setSalary(employeeDetail.getSalary());
+		employee.setGender(employeeDetail.getGender());
+		employee.setDate(employeeDetail.getDate());
+		employee.setStandard(employeeDetail.getStandard());
 
+		System.out.println(employee.getDate());
 		final Employee updatedEmployee = employeeRepository.save(employee);
 		return ResponseEntity.ok(updatedEmployee);
 	}
@@ -52,7 +56,6 @@ public class EmployeeController {
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") int id){
 		Employee employee = employeeRepository.findById(id).get();
 		employeeRepository.delete(employee);
-		
 		
 		return ResponseEntity.ok(employee);
 	}

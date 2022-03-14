@@ -7,11 +7,13 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeDashboardComponent
+    EmployeeDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

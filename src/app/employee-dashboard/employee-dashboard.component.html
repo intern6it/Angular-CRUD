@@ -1,6 +1,6 @@
-<nav class="navbar navbar-light bg-primary">
+<nav class="navbar navbar-light bg-primary ">
     <div class="container-fluid">
-        <h1>Angular CRUD</h1>
+        <h1 style="color: aliceblue;">Angular CRUD</h1>
         <div class="d-flex">
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
                 Add Employee
@@ -9,15 +9,18 @@
     </div>
 </nav>
 
-<table class="table mt-3">
+<table mat-table class="table mt-3">
     <thead>
         <tr>
             <th scope="col">Employee ID</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email ID</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Date</th>
             <th scope="col">Mobile No</th>
             <th scope="col">Salary</th>
+            <th scope="col">standard</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -27,8 +30,12 @@
             <td>{{row.firstName}}</td>
             <td>{{row.lastName}}</td>
             <td>{{row.email}}</td>
+            <td>{{row.gender}}</td>
+            <td>{{row.date}}</td>
             <td>{{row.mobile}}</td>
             <td>{{row.salary}}</td>
+            <td>{{row.standard}}</td>
+            
             <td>
                 <button (click)="onEdit(row)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Update</button>
                 <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
@@ -39,7 +46,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -55,10 +62,10 @@
 
                             <!-- <span *ngif="(formValueControl.firstName.touched || submitted) && formValueControl.firstName.errors?.required">
                                 First name is required
-                            </span> -->
+                            </span>
                             
                            
-                            <!-- <div *ngIf="!firstName.valid && (firstName.dirty ||firstName.touched)">
+                            <div *ngIf="!firstName.valid && (firstName.dirty ||firstName.touched)">
                                 <div [hidden]="!firstName.errors.pattern">
                                   Only characters are allowed
                                 </div>
@@ -92,11 +99,54 @@
                             <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
                                 <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                            </div> -->
-                          
+                            </div>
+                           -->
+                           <div *ngIf="formValue.controls['email'].invalid && (formValue.controls['email'].dirty || formValue.controls['email'].touched)" class="alert alert-danger">
+                            <div [hidden]="!formValue.controls['email'].errors">
+                              Email is required
+                            </div>
                     </div>
                     
-                    
+                    <div class="form-check">
+                        <input class="form-check-input"  type="radio" formControlName="gender" value ="male" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Male
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="gender" value="female" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Female
+                        </label>
+                      </div>
+
+
+
+                      <!-- <div class="form-check">
+                        <input class="form-select"  type="standard" formControlName="standard" value ="One">
+                        <label class="form-select">
+                         One
+                        </label>
+                      </div>
+                       <input class="form-select"  type="standard" formControlName="standard" value ="One">
+                        <label class="form-select">
+                         Two
+                        </label>
+                      </div> -->
+
+                      
+                      <select class="form-select" formControlName="standard"  aria-label="Default select example">
+                        <option selected>standard</option>
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="three">Three</option>
+                      </select>
+
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" formControlName="date" (click)="showDate($event)" type="date"
+                               name="date" >
+                        <button class="btn btn-outline-secondary calendar"  type="button"></button>
+                      </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mobile</label>
@@ -112,16 +162,18 @@
                         <input type="text" formControlName="salary" class="form-control" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
                     </div>
-                </form>
+               
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" (click)="postEmployeeDetails()" [disabled]="!formValue.valid" data-bs-dismiss="modal" class="btn btn-primary">Add</button>
                 <button type="button" (click)="updateEmployeeDetails()"  data-bs-dismiss="modal" class="btn btn-primary">Update</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+</div>
+
 
 <!-- <div style="float: right; width:50%;">
  

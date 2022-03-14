@@ -1,5 +1,10 @@
 package com.crudwithangular.model;
 
+
+
+import java.sql.Date;
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,18 +22,12 @@ public class Employee {
 	private String email;
 	private String mobile;
 	private String salary;
-	
+	private String gender;
+	private String date;
+	private String standard;
 	
 	public Employee() {
 		super();
-	}
-	public Employee(String firstName, String lastName, String email, String mobile, String salary) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.mobile = mobile;
-		this.salary = salary;
 	}
 	public int getId() {
 		return id;
@@ -66,11 +65,35 @@ public class Employee {
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	
+	public String getStandard() {
+		return standard;
+	}
+	public void setStandard(String standard) {
+		this.standard = standard;
+	}
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", mobile=" + mobile + ", salary=" + salary + "]";
+				+ ", mobile=" + mobile + ", salary=" + salary + ", gender=" + gender + ", date=" + date + ", standard="
+				+ standard + "]";
 	}
-	
 
+	
+	
+	
 }
+	
